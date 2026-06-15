@@ -1,25 +1,32 @@
-import React, { useState } from 'react'
-import Home from './Home'
-import FormHandleing from './FormHandleing'
-import MultiForm from './MultiForm'
+import Counter from './Counter'
+import ToggleSwitch from './ToggleSwitch'
+import ColorChanger from './ColorChange'
+import TodoList from './ToDoList'
+import CharacterCounter from './CharacterCounter'
+import './App.css'
 
-const App = () => {
-
- const[count,setCount] = useState(10)
-
- const handleClick=()=>{
-  console.log("clicked")
-  setCount(count+1)
- }
-
+function App() {
   return (
     <>
-    <div>App</div>
-    <h1>{count}</h1>
-    <button onClick={handleClick}>Click</button>
-    <Home/>
-    {/* <FormHandleing/> */}
-    <MultiForm/>
+      <header className="simple-header">
+        <h1>React Day 2 — useState Examples</h1>
+      </header>
+
+      <section className="useState-section">
+        <h2 className="section-title">useState Examples</h2>
+        <p className="section-sub">5 components showing different uses of useState hook</p>
+        <div className="cards-grid">
+          <Counter />
+          <ToggleSwitch />
+          <ColorChanger />
+          <TodoList />
+          <CharacterCounter />
+        </div>
+      </section>
+
+      <footer className="footer">
+        <p>© 2024 React Day 2</p>
+      </footer>
     </>
   )
 }
