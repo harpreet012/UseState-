@@ -1,28 +1,30 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-const WindowResize=()=>{
-  const[widthCount,setWidthCount] = useState(window.screen.width)
-  console.log(widthCount)
+const WindowResize = () => {
+  const [widthCount, setWidthCount] = useState(window.innerWidth);
 
-const updatedWidth = ()=>{
-  console.log(window.innerWidth);
-  setWidthCount(window.innerWidth)
-}
+  useEffect(() => {
+    const updatedWidth = () => {
+      setWidthCount(window.innerWidth);
+    };
 
-useEffect(()=>{
-  window.addEventListener('resize',updatedWidth)
+    window.addEventListener("resize", updatedWidth);
 
-  return()=>{
-    window.removeEventListener('resize',updatedWidth)
-  }
-},[])
-  return(
-    <>
-      <p>The actual size of the window:</p>
-      <h1>{widthCount}</h1>
-    </>
-  )
-}
+    return () => {
+      window.removeEventListener("resize", updatedWidth);
+    };
+  }, []);
 
-export default WindowResize
+  return (
+    <div className="page">
+      <h1>Window Resize Example</h1>
+      <p>Current browser width updates automatically.</p>
+
+      <div className="card">
+        <h2>{widthCount}px</h2>
+      </div>
+    </div>
+  );
+};
+
+export default WindowResize;

@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Timer = () => {
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const intervalId = Math.random().toString(36).slice(2, 7);
-
-    console.log("Creating interval:", intervalId);
-
     const interval = setInterval(() => {
-      console.log("Running interval:", intervalId);
       setCount((prev) => prev + 1);
     }, 1000);
 
-    return () => {
-      console.log("Cleaning interval:", intervalId);
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
-  return <h1>{count}</h1>;
-}
+  return (
+    <div className="page">
+      <h1>Timer Example</h1>
+      <p>Counter increases every second using useEffect.</p>
+
+      <div className="card">
+        <h2>{count} Seconds</h2>
+      </div>
+    </div>
+  );
+};
 
 export default Timer;
